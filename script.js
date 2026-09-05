@@ -12,6 +12,30 @@ const loginStatus = document.querySelector('#loginStatus');
 const personName = document.querySelector('#personName');
 const celebrationName = document.querySelector('#celebrationName');
 
+function readStorage(key) {
+  try {
+    return localStorage.getItem(key);
+  } catch (error) {
+    return null;
+  }
+}
+
+function writeStorage(key, value) {
+  try {
+    localStorage.setItem(key, value);
+  } catch (error) {
+    // Browser storage may be unavailable or full; the page can still be used.
+  }
+}
+
+function removeStorage(key) {
+  try {
+    localStorage.removeItem(key);
+  } catch (error) {
+    // Nothing to remove when browser storage is unavailable.
+  }
+}
+
 loginForm.addEventListener('submit', (event) => {
   event.preventDefault();
   const name = visitorName.value.trim();
@@ -25,11 +49,11 @@ loginForm.addEventListener('submit', (event) => {
   document.querySelector('#openGift').focus();
 });
 
-const savedLetter = localStorage.getItem('secret-custom-letter');
+const savedLetter = readStorage('secret-custom-letter');
 if (savedLetter) customLetter.textContent = savedLetter;
 
 customLetter.addEventListener('input', () => {
-  localStorage.setItem('secret-custom-letter', customLetter.textContent.trim());
+  writeStorage('secret-custom-letter', customLetter.textContent.trim());
 });
 
 function floatHearts() {
@@ -92,7 +116,7 @@ document.querySelectorAll('.photo-input').forEach((input) => {
     reader.addEventListener('load', () => {
       preview.src = reader.result;
       preview.parentElement.classList.add('has-image');
-      localStorage.setItem(`valentine-${input.dataset.preview}`, reader.result);
+      writeStorage(`valentine-${input.dataset.preview}`, reader.result);
     });
     reader.readAsDataURL(file);
   });
@@ -106,35 +130,35 @@ document.querySelector('#musicInput').addEventListener('change', (event) => {
     const player = document.querySelector('#musicPlayer');
     player.src = reader.result;
     document.querySelector('#songName').textContent = file.name;
-    localStorage.setItem('valentine-song', reader.result);
-    localStorage.setItem('valentine-song-name', file.name);
+    writeStorage('valentine-song', reader.result);
+    writeStorage('valentine-song-name', file.name);
   });
   reader.readAsDataURL(file);
 });
 
 document.querySelectorAll('.photo-input').forEach((input) => {
-  const savedPhoto = localStorage.getItem(`valentine-${input.dataset.preview}`);
+  const savedPhoto = readStorage(`valentine-${input.dataset.preview}`);
   if (!savedPhoto) return;
   const preview = document.querySelector(`#${input.dataset.preview}`);
   preview.src = savedPhoto;
   preview.parentElement.classList.add('has-image');
 });
 
-const savedSong = localStorage.getItem('valentine-song');
+const savedSong = readStorage('valentine-song');
 if (savedSong) {
   document.querySelector('#musicPlayer').src = savedSong;
-  document.querySelector('#songName').textContent = localStorage.getItem('valentine-song-name') || 'Your favorite song';
+  document.querySelector('#songName').textContent = readStorage('valentine-song-name') || 'Your favorite song';
 }
 
 document.querySelector('#resetMemories').addEventListener('click', () => {
   document.querySelectorAll('.photo-input').forEach((input) => {
-    localStorage.removeItem(`valentine-${input.dataset.preview}`);
+    removeStorage(`valentine-${input.dataset.preview}`);
     input.value = '';
     input.parentElement.classList.remove('has-image');
     document.querySelector(`#${input.dataset.preview}`).removeAttribute('src');
   });
-  localStorage.removeItem('valentine-song');
-  localStorage.removeItem('valentine-song-name');
+  removeStorage('valentine-song');
+  removeStorage('valentine-song-name');
   document.querySelector('#musicPlayer').removeAttribute('src');
   document.querySelector('#songName').textContent = 'Add your song here';
 });
