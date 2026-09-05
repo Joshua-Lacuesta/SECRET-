@@ -49,11 +49,11 @@ loginForm.addEventListener('submit', (event) => {
   document.querySelector('#openGift').focus();
 });
 
-const savedLetter = readStorage('secret-custom-letter');
+const savedLetter = readStorage('secret-custom-letter-v2');
 if (savedLetter) customLetter.textContent = savedLetter;
 
 customLetter.addEventListener('input', () => {
-  writeStorage('secret-custom-letter', customLetter.textContent.trim());
+  writeStorage('secret-custom-letter-v2', customLetter.textContent.trim());
 });
 
 function floatHearts() {
