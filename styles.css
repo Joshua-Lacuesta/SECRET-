@@ -133,6 +133,7 @@ h1 em, .letter h2 em { color:var(--deep); font-weight:600; }
 .slot-large { grid-row:1 / 3; }
 .memory-slot input { position:absolute; width:1px; height:1px; opacity:0; }
 .memory-slot img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; opacity:1; transition:opacity .3s; }
+.memory-slot img[src] { opacity:1 !important; }
 .memory-slot.has-image img { opacity:1; }
 .memory-slot:has(img[src]:not([src=''])) .slot-copy { opacity:0; }
 .slot-copy { position:absolute; inset:0; display:flex; flex-direction:column; justify-content:space-between; padding:14px; transition:opacity .3s; }
