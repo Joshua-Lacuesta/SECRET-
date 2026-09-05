@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>A Little Question</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Playfair+Display:wght@600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <section class="login-screen" id="loginScreen" aria-labelledby="loginTitle" aria-hidden="false">
+    <div class="login-orbit orbit-one" aria-hidden="true">✦</div>
+    <div class="login-orbit orbit-two" aria-hidden="true">♥</div>
+    <div class="login-card">
+      <div class="login-card-top"><span>PRIVATE ENTRY</span><span>01 / 01</span></div>
+      <div class="login-symbol" aria-hidden="true">♡</div>
+      <p class="login-kicker">This little place is for</p>
+      <h1 id="loginTitle">one special<br><em>person.</em></h1>
+      <p class="login-copy">Enter your name to open<br>what I made for you.</p>
+      <form id="loginForm">
+        <label for="visitorName">YOUR NAME</label>
+        <input id="visitorName" name="visitorName" type="text" autocomplete="name" placeholder="Type your name" required />
+        <button type="submit">OPEN MY SURPRISE <span>↗</span></button>
+      </form>
+      <p class="login-status" id="loginStatus" aria-live="polite"></p>
+      <div class="login-card-bottom"><span>MADE WITH COURAGE</span><span>♥</span></div>
+    </div>
+  </section>
+  <main class="scene">
+    <div class="grain" aria-hidden="true"></div>
+    <div class="topline"><span>VOL. 01</span><span>MADE WITH COURAGE</span></div>
+
+    <section class="intro" aria-labelledby="title">
+      <p class="eyebrow">A little question for <span id="personName">you</span> <span>♡</span></p>
+      <h1 id="title">Can I<br><em>be your</em><br>person<span class="period">?</span></h1>
+      <p class="hint">There is something waiting<br>inside the heart.</p>
+    </section>
+
+    <section class="gift-area" aria-label="Secret question">
+      <button class="heart-button" id="openGift" aria-label="Open the question">
+        <span class="heart-glow"></span>
+        <span class="heart" aria-hidden="true"></span>
+        <span class="ribbon ribbon-left" aria-hidden="true"></span>
+        <span class="ribbon ribbon-right" aria-hidden="true"></span>
+        <span class="knot" aria-hidden="true"></span>
+      </button>
+      <p class="click-note" id="clickNote">CLICK THE HEART WHEN YOU'RE READY</p>
+    </section>
+
+    <section class="letter" id="letter" aria-live="polite" aria-hidden="true">
+      <div class="letter-mark">A QUESTION, HONESTLY ASKED</div>
+      <p class="letter-kicker">A note from my heart</p>
+      <h2>Can I call<br>you<br><em>my girlfriend?</em></h2>
+      <p class="letter-copy" id="customLetter" contenteditable="true" role="textbox" aria-label="Customize your message">I like the way you make ordinary days feel special. I would love to get to know you more, be there for you, and make more memories together.</p>
+      <p class="edit-hint">CLICK THE MESSAGE TO CUSTOMIZE IT</p>
+      <div class="signature">would you say yes? <span>♥</span></div>
+      <div class="answer-actions">
+        <button class="answer-button answer-yes" id="answerYes" type="button">YES, LET'S TRY</button>
+        <button class="answer-button answer-time" id="answerTime" type="button">I NEED TIME</button>
+      </div>
+      <p class="answer-result" id="answerResult" aria-live="polite"></p>
+      <button class="close-letter" id="closeGift" type="button">CLOSE NOTE</button>
+    </section>
+
+    <section class="celebration" id="celebration" aria-live="assertive" aria-hidden="true">
+      <div class="confetti confetti-one" aria-hidden="true">✦</div>
+      <div class="confetti confetti-two" aria-hidden="true">♥</div>
+      <div class="confetti confetti-three" aria-hidden="true">✦</div>
+      <div class="celebration-card">
+        <button class="celebration-close" id="closeCelebration" type="button" aria-label="Close celebration">×</button>
+        <div class="celebration-gif" aria-hidden="true">🎉</div>
+        <p class="celebration-kicker">HAPPY!!!</p>
+        <h2>She said<br><em>yes.</em></h2>
+        <p class="celebration-copy"><span id="celebrationName">Tumalikod ka muna</span>,<br>may ibibigay ako sa'yo.</p>
+        <div class="celebration-heart">♥</div>
+      </div>
+    </section>
+
+    <nav class="vault-nav" aria-label="Your story vaults">
+      <span class="vault-label">OPEN A LITTLE CHAPTER</span>
+      <a href="#memories" class="vault-link"><strong>01</strong><span>MEMORY VAULT</span><b>↘</b></a>
+      <a href="#musicVault" class="vault-link"><strong>02</strong><span>SOUND VAULT</span><b>↘</b></a>
+      <button class="vault-link" id="openLetterVault" type="button"><strong>03</strong><span>LETTER VAULT</span><b>↗</b></button>
+    </nav>
+
+    <section class="memories" id="memories" aria-labelledby="memoriesTitle">
+      <div class="section-heading">
+        <p class="eyebrow">Before the answer <span>♡</span></p>
+        <h2 id="memoriesTitle">Our little<br><em>story.</em></h2>
+        <p>Keep the moments and music<br>that made me ask.</p>
+      </div>
+      <div class="memory-grid">
+        <label class="memory-slot slot-large">
+          <input class="photo-input" type="file" accept="image/*" data-preview="photoOne" />
+          <img id="photoOne" alt="Your first memory" />
+          <span class="slot-copy"><strong>01</strong><span>ADD A FAVORITE PHOTO</span></span>
+        </label>
+        <label class="memory-slot slot-small">
+          <input class="photo-input" type="file" accept="image/*" data-preview="photoTwo" />
+          <img id="photoTwo" alt="Your second memory" />
+          <span class="slot-copy"><strong>02</strong><span>ONE MORE MOMENT</span></span>
+        </label>
+        <label class="memory-slot slot-small">
+          <input class="photo-input" type="file" accept="image/*" data-preview="photoThree" />
+          <img id="photoThree" alt="Your third memory" />
+          <span class="slot-copy"><strong>03</strong><span>JUST BECAUSE</span></span>
+        </label>
+      </div>
+      <div class="music-panel" id="musicVault">
+        <div class="music-icon">♪</div>
+        <div class="music-copy"><span>THE SONG THAT FEELS LIKE US</span><strong id="songName">Add your song here</strong></div>
+        <label class="music-upload"><input id="musicInput" type="file" accept="audio/*" />CHOOSE TRACK</label>
+        <audio id="musicPlayer" controls></audio>
+      </div>
+      <button class="reset-memories" id="resetMemories" type="button">RESET PHOTOS &amp; SONG</button>
+    </section>
+
+    <footer><span>MADE FOR ONE PERSON</span><span class="footer-heart">♥</span><span>JUST US</span></footer>
+  </main>
+  <script src="script.js"></script>
+</body>
+</html>
